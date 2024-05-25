@@ -3,4 +3,4 @@ const message = {
   text: "Hello World",
 };
 
-export default message;
+export default message; // ES Module Syntax
