@@ -7,7 +7,9 @@
 import message from "./message.js";
 import "./css/style.css";
 // npm run build
+// now css we added will be included in 'bundle.js'
 
+console.log(message.text);
 console.log(message);
 
 // npm run build  // we run "build" script in package.json
