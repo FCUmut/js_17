@@ -26,6 +26,16 @@ module.exports = {
         test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel-preset-env"],
+          },
+        },
+      },
     ],
   },
   // https://github.com/jantimon/html-webpack-plugin#options you can check which options you can use in html-webpack-plugin
