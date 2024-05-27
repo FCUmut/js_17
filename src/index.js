@@ -14,4 +14,7 @@ console.log(message);
 
 // npm run build  // we run "build" script in package.json
 
+// we can use babel module to change our arrow function into regular functions to make our code compatible with older browsers
 const hello = () => console.log("hello");
+
+// npm i babel-loader @babel/core @babel/preset-env -D

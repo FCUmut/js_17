@@ -1,6 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+// to install mini css plugin, it will prevent flash of html without css in large projects while opening
+// npm install --save-dev mini-css-extract-plugin
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
   mode: "development",
   entry: "./src/index.js",
@@ -24,15 +28,20 @@ module.exports = {
       {
         // regular expressions are between '/ /' and '$' means stands for files ends with '.css'. and we apply style-loader and css-loader with 'use:'
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        // use: ["style-loader", "css-loader"],
+        // replaced
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      // babel setup
       {
+        // any file that ends with .js
         test: /\.js$/,
+        // exlude the js files in node_modules
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel-preset-env"],
+            presets: ["@babel/preset-env"],
           },
         },
       },
@@ -48,6 +57,8 @@ module.exports = {
     }),
     // we will delete current 'dist' folder and
     // npm run build
+
+    new MiniCssExtractPlugin(),
   ],
 };
 
